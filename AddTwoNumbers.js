@@ -20,13 +20,13 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-    var res = new ListNode(0);
-    var current_node = res;
-    var next_node = res;
-    var tmp1 = l1;
-    var tmp2 = l2;
-    var tmp_sum = 0;
-    var tmp_carry = 0;
+    var res = new ListNode(0);  //头结点
+    var current_node = res; //当前节点
+    var next_node = res;  //下一节点
+    var tmp1 = l1;  //l1链表当前节点
+    var tmp2 = l2;  //l2链表当前节点
+    var tmp_sum = 0;   //当前位数的和
+    var tmp_carry = 0;  //进位
     
     while(tmp1 !== null || tmp2 !== null) {
         if(tmp1 !== null && tmp2 !== null) {
@@ -41,7 +41,7 @@ var addTwoNumbers = function(l1, l2) {
             tmp1 = tmp1.next;
         } 
          
-        
+        //判断进位
         if(tmp_sum >= 10) {
             tmp_sum = tmp_sum - 10;
             tmp_carry = 1;
@@ -50,6 +50,7 @@ var addTwoNumbers = function(l1, l2) {
         }
         
         current_node.val = tmp_sum;
+        //判断最高位
         if(tmp1 !== null || tmp2 !== null) {
             next_node = new ListNode(0);
             current_node.next = next_node;
